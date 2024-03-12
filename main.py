@@ -5,6 +5,8 @@ import click
 
 import click
 
+API_KEY = os.environ["GIF_KEY"] 
+
 
 @click.group()
 def gif():
@@ -36,12 +38,12 @@ def buildTrendingCall(KEY,
                       limit = 5, 
                       offset = 0, 
                       rating = "g", 
-                      bundle = "messaging_non_clips" ):
+                      random_id = "rob"
+                      bundle = "messaging_non_clips"):
     print("woo")
       
 
 if __name__ == "__main__":
-	API_KEY = os.environ["GIF_KEY"] 
 	apiCall = "https://api.giphy.com/v1/gifs/trending?api_key=" + API_KEY + "&limit=1&offset=0&rating=g" 
 
 	resp = requests.get(apiCall)
