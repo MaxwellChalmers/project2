@@ -9,6 +9,9 @@ readme = "README.md"
 python = "^3.12"
 requests = "^2.31.0"
 click = "^8.1.7"
+black = "^24.2.0"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
 
 
 [build-system]
