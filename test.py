@@ -2,7 +2,6 @@ import os
 import unittest
 
 from giphyAPI import GiphyAPI
-from giphyCLI import GiphyCLI
 
 API_KEY = os.environ["GIF_KEY"]
 

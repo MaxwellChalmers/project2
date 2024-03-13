@@ -3,13 +3,11 @@ import requests
 
 class GiphyAPI:
 
-    
     def __init__(self, KEY):
-        self.API_KEY = KEY 
+        self.API_KEY = KEY
 
     searchUrl = "https://api.giphy.com/v1/gifs/search?"
     trendingUrl = "https://api.giphy.com/v1/gifs/trending?"
-
 
     @staticmethod
     def buildSearchCall(
