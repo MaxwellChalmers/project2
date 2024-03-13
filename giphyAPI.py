@@ -2,8 +2,14 @@ import requests
 
 
 class GiphyAPI:
+
+    
+    def __init__(self, KEY):
+        self.API_KEY = KEY 
+
     searchUrl = "https://api.giphy.com/v1/gifs/search?"
     trendingUrl = "https://api.giphy.com/v1/gifs/trending?"
+
 
     @staticmethod
     def buildSearchCall(
@@ -47,14 +53,14 @@ class GiphyAPI:
         }
         return trendingParams
 
-    def callTrending(self, KEY, limit=5):
-        callParams = self.buildTrendingCall(KEY, limit)
+    def callTrending(self, limit=5):
+        callParams = self.buildTrendingCall(self.API_KEY, limit)
         resp = requests.get(self.trendingUrl, params=callParams)
         print(resp.json().keys())
-        return resp.json()
+        return resp.json()["data"]
 
-    def callSearch(self, KEY, query="cats", limit=5):
-        callParams = self.buildSearchCall(KEY, query, limit)
+    def callSearch(self, query="cats", limit=5):
+        callParams = self.buildSearchCall(self.API_KEY, query, limit)
         resp = requests.get(self.searchUrl, params=callParams)
         print(resp.json().keys())
-        return resp.json()
+        return resp.json()["data"]

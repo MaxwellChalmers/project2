@@ -3,6 +3,7 @@ import os
 import click
 
 from giphyAPI import GiphyAPI
+from giphyCLI import GiphyCLI
 
 API_KEY = os.environ["GIF_KEY"]
 
@@ -19,25 +20,28 @@ def gif():
 @gif.command()
 def trending():
     print("trending subcommand called!")
-    giphy_api = GiphyAPI()
-    resp = giphy_api.callTrending(API_KEY, 1)
-    info = resp["data"][0]
-    print(info.keys())
-    url = info["bitly_gif_url"]
-    title = info["title"]
-    print("1) " + title + " (" + url + ")")
+    cli = GiphyCLI(API_KEY)
+    cli.trending()
+    cli.trending(markdown=True)
+
+   
+   # giphy_api = GiphyAPI()
+    #resp = giphy_api.callTrending(API_KEY, 1)
+    #info = resp["data"][0]
+    #print(info.keys())
+    #url = info["bitly_gif_url"]
+    #title = info["title"]
+    #print("1) " + title + " (" + url + ")")
 
 
 @gif.command()
 def search():
-    giphy_api = GiphyAPI()
     print("search subcommand called!")
-    resp = giphy_api.callSearch(API_KEY)
-    info = resp["data"][0]
-    print(info.keys())
-    url = info["bitly_gif_url"]
-    title = info["title"]
-    print("1) " + title + " (" + url + ")")
+    cli = GiphyCLI(API_KEY)
+    cli.search()
+    cli.search(markdown=True)
+    cli.search(query="Dance Party", markdown=True, limit=50)
+    
 
 
 if __name__ == "__main__":
