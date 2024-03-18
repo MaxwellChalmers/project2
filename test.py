@@ -16,6 +16,7 @@ class TestAPI(unittest.TestCase):
     def test_Search(self):
         api = GiphyAPI(API_KEY)
         search = api.callSearch()
+
         self.assertIsInstance(search, dict)
 
 

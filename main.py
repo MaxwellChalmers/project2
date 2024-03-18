@@ -4,6 +4,7 @@ import click
 
 from giphyCLI import GiphyCLI
 
+
 API_KEY = os.environ["GIF_KEY"]
 
 
@@ -33,13 +34,16 @@ def trending():
 # print("1) " + title + " (" + url + ")")
 
 
+
 @gif.command()
 def search():
+    giphy_api = GiphyAPI()
     print("search subcommand called!")
     cli = GiphyCLI(API_KEY)
     cli.search()
     cli.search(markdown=True)
     cli.search(query="Dance Party", markdown=True, limit=50)
+
 
 
 if __name__ == "__main__":
