@@ -9,13 +9,14 @@ API_KEY = os.environ["GIF_KEY"]
 class TestAPI(unittest.TestCase):
 
     def test_Trending(self):
-        api = GiphyAPI()
-        trending = api.callTrending(API_KEY)
+        api = GiphyAPI(API_KEY)
+        trending = api.callTrending()
         self.assertIsInstance(trending, dict)
 
     def test_Search(self):
-        api = GiphyAPI()
-        search = api.callSearch(API_KEY)
+        api = GiphyAPI(API_KEY)
+        search = api.callSearch()
+
         self.assertIsInstance(search, dict)
 
 
