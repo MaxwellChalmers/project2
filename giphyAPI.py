@@ -6,7 +6,6 @@ class GiphyAPI:
     def __init__(self, KEY):
         self.API_KEY = KEY
 
-
     searchUrl = "https://api.giphy.com/v1/gifs/search?"
     trendingUrl = "https://api.giphy.com/v1/gifs/trending?"
 
@@ -63,4 +62,3 @@ class GiphyAPI:
         resp = requests.get(self.searchUrl, params=callParams)
         print(resp.json().keys())
         return resp.json()["data"]
-

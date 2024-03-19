@@ -46,4 +46,3 @@ class GiphyCLI:
                 print(str(i + 1) + ") ![" + title + "](" + url + ")")
             else:
                 print(str(i + 1) + ") " + title + " (" + bitlyUrl + ")")
-
