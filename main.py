@@ -36,19 +36,7 @@ def trending():
 
 
 @gif.command()
-<<<<<<< HEAD
-
-
-@click.argument("query")
-@click.option("--count", default = 5)
-@click.option("--markdown", is_flag=True, default=False, 
-              help="sends the gif in markdown format")
-@click.option("--lucky", is_flag=True, default=False, 
-              help="sends only the first result" )
-def search(count, markdown, lucky, query):
-=======
 def search():
->>>>>>> parent of c2e836f (click options)
     print("search subcommand called!")
     cli = GiphyCLI(API_KEY)
     cli.search()
