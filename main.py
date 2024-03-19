@@ -11,23 +11,18 @@ API_KEY = os.environ["GIF_KEY"]
 searchUrl = "https://api.giphy.com/v1/gifs/search?"
 trendingUrl = "https://api.giphy.com/v1/gifs/trending?"
 
+
 @click.group()
 def gif():
     print("hello from giphy cli!")
 
 
 @gif.command()
-@click.option("--count", default = 5, help="the number of results")
-@click.option("--markdown", is_flag=True, default=False, 
-              help="sends the gif in markdown format")
-@click.option("--lucky", is_flag=True, default=False, 
-              help="sends only the first result" )
-def trending(count, markdown, lucky):
+def trending():
     print("trending subcommand called!")
     cli = GiphyCLI(API_KEY)
-    if lucky : count = 1
-   # cli.trending()
-    cli.trending(markdown=markdown, limit=count)
+    cli.trending()
+    cli.trending(markdown=True)
 
 
 # giphy_api = GiphyAPI()
@@ -41,6 +36,7 @@ def trending(count, markdown, lucky):
 
 
 @gif.command()
+<<<<<<< HEAD
 
 
 @click.argument("query")
@@ -50,12 +46,14 @@ def trending(count, markdown, lucky):
 @click.option("--lucky", is_flag=True, default=False, 
               help="sends only the first result" )
 def search(count, markdown, lucky, query):
+=======
+def search():
+>>>>>>> parent of c2e836f (click options)
     print("search subcommand called!")
     cli = GiphyCLI(API_KEY)
-    if lucky : count = 1
-    #cli.search(limit=count)
-    cli.search(markdown=markdown, limit=count, query=query)
-    #cli.search(query="Dance Party", markdown=True, limit=50)
+    cli.search()
+    cli.search(markdown=True)
+    cli.search(query="Dance Party", markdown=True, limit=50)
 
 
 
