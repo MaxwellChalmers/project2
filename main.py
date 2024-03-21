@@ -36,6 +36,7 @@ def trending(count, markdown, lucky):
     cli.trending(markdown=markdown, limit=count)
 
 
+
 @gif.command()
 @click.argument("query")
 @click.option("--count", default=5)
@@ -56,6 +57,7 @@ def search(count, markdown, lucky, query):
     # cli.search(limit=count)
     cli.search(markdown=markdown, limit=count, query=query)
     # cli.search(query="Dance Party", markdown=True, limit=50)
+
 
 @gif.command()
 @click.argument("message")
