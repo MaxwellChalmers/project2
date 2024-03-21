@@ -46,3 +46,19 @@ class GiphyCLI:
                 print(str(i + 1) + ") ![" + title + "](" + url + ")")
             else:
                 print(str(i + 1) + ") " + title + " (" + bitlyUrl + ")")
+
+    def ransom(self, message):
+        api = GiphyAPI(self.API_KEY)
+
+        rMessage = ""
+        for c in message:
+            if (c == "_"): 
+                rMessage += "\n"
+            else:
+                letterGif = api.callSearch(query=c, limit=1)
+                gif = letterGif[0]
+                #title = gif["title"]
+                url = gif["images"]["fixed_height_small"]["url"]
+                rMessage += ("![" + c + "](" + url + ")") 
+        print(rMessage)
+    

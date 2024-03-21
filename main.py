@@ -57,6 +57,11 @@ def search(count, markdown, lucky, query):
     cli.search(markdown=markdown, limit=count, query=query)
     # cli.search(query="Dance Party", markdown=True, limit=50)
 
-
+@gif.command()
+@click.argument("message")
+def ransom(message):
+    cli = GiphyCLI(API_KEY)
+    cli.ransom(message)
+    
 if __name__ == "__main__":
     gif()
