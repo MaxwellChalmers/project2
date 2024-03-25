@@ -1,5 +1,5 @@
+import json
 import requests
-
 
 class GiphyAPI:
 
@@ -54,11 +54,32 @@ class GiphyAPI:
     def callTrending(self, limit=5):
         callParams = self.buildTrendingCall(self.API_KEY, limit)
         resp = requests.get(self.trendingUrl, params=callParams)
-        print(resp.json().keys())
         return resp.json()["data"]
 
     def callSearch(self, query="cats", limit=5):
         callParams = self.buildSearchCall(self.API_KEY, query, limit)
         resp = requests.get(self.searchUrl, params=callParams)
-        print(resp.json().keys())
         return resp.json()["data"]
+
+    def storeJSON(self, gif_list, filename):
+        with open(filename + ".json", "w") as json_file:
+                json.dump(gif_list, json_file)
+    
+    def openJSON(self, filename):
+        with open(filename + ".json", "r") as json_file:
+            data = json.load(json_file)
+            print(len(data))
+            return data
+        
+    def pruneJSON(self, toBeRemoved, filename):
+       letterList = self.openJSON("letters/" + filename) 
+       toBeRemoved.sort(reverse=True)
+       for i in toBeRemoved:
+            if 0 <= i < len(letterList):
+                del letterList[i]
+            else:
+                print(f"Ignoring index {i}: Index out of range")
+                
+                
+       self.storeJSON(letterList, "letters/" + filename)
+
