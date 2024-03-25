@@ -32,9 +32,7 @@ def trending(count, markdown, lucky):
     cli = GiphyCLI(API_KEY)
     if lucky:
         count = 1
-    # cli.trending()
     cli.trending(markdown=markdown, limit=count, lucky=lucky)
-
 
 
 @gif.command()
@@ -64,6 +62,7 @@ def search(count, markdown, lucky, query):
 def ransom(message):
     cli = GiphyCLI(API_KEY)
     cli.ransom(message)
-    
+
+
 def main():
     gif()

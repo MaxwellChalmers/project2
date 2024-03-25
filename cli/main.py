@@ -1,4 +1,5 @@
 import os
+
 import click
 import requests
 
@@ -68,7 +69,7 @@ class GiphyCLI:
                 letterGif = api.callSearch(query=c, limit=1)
                 gif = letterGif[0]
                 url = gif["images"]["fixed_height_small"]["url"]
-                rMessage += ("![" + c + "](" + url + ")")
+                rMessage += "![" + c + "](" + url + ")"
         print(rMessage)
 
 
@@ -79,14 +80,14 @@ class GiphyAPI:
 
     @staticmethod
     def buildSearchCall(
-            KEY,
-            query="cats",
-            limit=5,
-            offset=0,
-            rating="g",
-            lang="en",
-            random_id="bob",
-            bundle="messaging_non_clips",
+        KEY,
+        query="cats",
+        limit=5,
+        offset=0,
+        rating="g",
+        lang="en",
+        random_id="bob",
+        bundle="messaging_non_clips",
     ):
         searchParams = {
             "api_key": KEY,
@@ -102,12 +103,12 @@ class GiphyAPI:
 
     @staticmethod
     def buildTrendingCall(
-            KEY,
-            limit=5,
-            offset=0,
-            rating="g",
-            random_id="rob",
-            bundle="messaging_non_clips",
+        KEY,
+        limit=5,
+        offset=0,
+        rating="g",
+        random_id="rob",
+        bundle="messaging_non_clips",
     ):
         trendingParams = {
             "api_key": KEY,

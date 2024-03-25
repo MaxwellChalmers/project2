@@ -1,5 +1,7 @@
 import json
+
 import requests
+
 
 class GiphyAPI:
 
@@ -61,25 +63,25 @@ class GiphyAPI:
         resp = requests.get(self.searchUrl, params=callParams)
         return resp.json()["data"]
 
+    def cachedJSON(self):
+        return self.openJSON("A")
+
     def storeJSON(self, gif_list, filename):
         with open(filename + ".json", "w") as json_file:
-                json.dump(gif_list, json_file)
-    
+            json.dump(gif_list, json_file)
+
     def openJSON(self, filename):
         with open(filename + ".json", "r") as json_file:
             data = json.load(json_file)
-            print(len(data))
             return data
-        
+
     def pruneJSON(self, toBeRemoved, filename):
-       letterList = self.openJSON("letters/" + filename) 
-       toBeRemoved.sort(reverse=True)
-       for i in toBeRemoved:
+        letterList = self.openJSON("letters/" + filename)
+        toBeRemoved.sort(reverse=True)
+        for i in toBeRemoved:
             if 0 <= i < len(letterList):
                 del letterList[i]
             else:
                 print(f"Ignoring index {i}: Index out of range")
-                
-                
-       self.storeJSON(letterList, "letters/" + filename)
 
+        self.storeJSON(letterList, "letters/" + filename)
